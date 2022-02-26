@@ -11,6 +11,7 @@ import lombok.Data;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Data
 public class GetCategoryResponse {
+
     @JsonProperty("id")
     private Integer id;
     @JsonProperty("title")

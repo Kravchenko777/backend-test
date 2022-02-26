@@ -21,9 +21,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class CreateProductTest {
 
     static ProductService productService;
-    Product product;
+    Product product = null;
     Faker faker = new Faker();
-
     int id;
 
     @BeforeAll

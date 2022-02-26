@@ -24,8 +24,6 @@ public class GetCategoryTest {
     @Test
     void getCategoryByIdPositiveTest() {
         Response<GetCategoryResponse> response = categoryService.getCategory(1).execute();
-
-
         assertThat(response.isSuccessful(), CoreMatchers.is(true));
         assertThat(response.body().getId(), equalTo(1));
         assertThat(response.body().getTitle(), equalTo("Food"));
@@ -34,27 +32,5 @@ public class GetCategoryTest {
 
 
     }
-
-    @Test
-    void test(){
-
-        MuClass muClass = new MuClass();
-        System.out.println("1 " + muClass.toString());
-        test1(muClass);
-
-    }
-
-    public void test1(MuClass muClass){
-        System.out.println("2 " + muClass.toString());
-
-    }
-
-    public class MuClass{
-
-        public String str="123";
-        public Integer my = 123;
-
-    }
-
 
 }
