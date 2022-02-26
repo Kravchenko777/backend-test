@@ -1,7 +1,11 @@
 package lesson5.utils;
 
+import lombok.SneakyThrows;
+import lombok.experimental.UtilityClass;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Retrofit;
+import retrofit2.converter.jackson.JacksonConverterFactory;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

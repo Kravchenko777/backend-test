@@ -2,6 +2,8 @@ package lesson5.api;
 
 import lesson5.dto.Product;
 import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.http.*;
 
 public interface ProductService {
 
