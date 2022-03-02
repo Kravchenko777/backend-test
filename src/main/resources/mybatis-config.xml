@@ -9,14 +9,14 @@
             <dataSource type="POOLED">
                 <property name="driver" value="org.postgresql.Driver"/>
                 <property name="url"
-                          value="jdbc:postgresql://80.78.248.82:5432/coursedb"/>
+                          value="jdbc:postgresql://80.78.248.82:5434/coursedb"/>
                 <property name="username" value="postgres"/>
                 <property name="password" value="postgres"/>
             </dataSource>
         </environment>
     </environments>
     <mappers>
-        <mapper resource="db\mapper\xml\CategoriesMapper.xml"/>
-        <mapper resource="db\mapper\xml\ProductsMapper.xml"/>
+        <mapper resource="lesson6\db\mapper\xml\CategoriesMapper.xml"/>
+        <mapper resource="lesson6\db\mapper\xml\ProductsMapper.xml"/>
     </mappers>
 </configuration>
