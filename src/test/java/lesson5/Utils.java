@@ -28,7 +28,7 @@ public class Utils {
         String result = writer.toString();
         System.out.println(result);
 
-        StringReader reader = new StringReader("{\"id2\":1,\"title\":\"myTitle\",\"products\":[]}");
+        StringReader reader = new StringReader("{\"id\":1,\"title\":\"myTitle\",\"products\":[]}");
 
         GetCategoryResponse getCategoryResponseReader = mapper.readValue(reader, GetCategoryResponse.class);
     }
