@@ -22,12 +22,12 @@ public class ExampleMain {
         SqlSession session = sqlSessionFactory.openSession();
         db.dao.CategoriesMapper categoriesMapper = session.getMapper(db.dao.CategoriesMapper.class);
         db.model.CategoriesExample example = new db.model.CategoriesExample();
-        example.createCriteria().andIdEqualTo(800);
+        example.createCriteria().andIdEqualTo(100);
         List<db.model.Categories> list = categoriesMapper.selectByExample(example);
 
         db.model.Categories categories = new db.model.Categories();
-        categories.setId(800);
-        categories.setTitle("123");
+        categories.setId(100);
+        categories.setTitle("Clothes1");
         categoriesMapper.updateByExample(categories, example);
 
 
