@@ -3,7 +3,7 @@ package lesson4;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import lombok.Data;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,5 +44,8 @@ public class AddMealRequest {
         @JsonProperty("name")
         private String name;
     }
+
+
+
 }
 

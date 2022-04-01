@@ -31,12 +31,13 @@ public class ExampleMain {
                 //.expectHeader("Access-Control-Allow-Credentials", "true")
                 .build();
 
-        //RestAssured.responseSpecification = responseSpecification;
+        RestAssured.responseSpecification = responseSpecification;
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
 
         requestSpecification = new RequestSpecBuilder()
                 .addQueryParam("apiKey", apiKey)
                 .addQueryParam("includeNutrition", "false")
+                .setContentType(ContentType.JSON)
                 .log(LogDetail.ALL)
                 .build();
 
@@ -47,7 +48,7 @@ public class ExampleMain {
     void getRecipePositiveTest() {
         given().spec(requestSpecification)
                 .when()
-                .get("https://api.spoonacular.com/recipes/716429/information").prettyPeek()
+                .get("https://api.spoonacular.com/recipes/716429/information")
                 .then()
                 .spec(responseSpecification);
     }
@@ -65,6 +66,17 @@ public class ExampleMain {
                 .body()
                 .as(Response.class);
         assertThat(response.getCuisine(), containsString("American"));
+    }
+
+    @Test
+    void test(){
+        given().spec(requestSpecification)
+                .when()
+                .formParam("title","Pork roast with green beans")
+                .formParam("language", "de")
+                .post("https://api.spoonacular.com/recipes/cuisine").prettyPeek()
+                .then()
+                .statusCode(200);
     }
 
 }
