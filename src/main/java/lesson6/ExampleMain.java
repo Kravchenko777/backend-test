@@ -22,17 +22,27 @@ public class ExampleMain {
         SqlSession session = sqlSessionFactory.openSession();
         db.dao.CategoriesMapper categoriesMapper = session.getMapper(db.dao.CategoriesMapper.class);
         db.model.CategoriesExample example = new db.model.CategoriesExample();
-        example.createCriteria().andIdEqualTo(100);
+        example.createCriteria().andIdEqualTo(1);
         List<db.model.Categories> list = categoriesMapper.selectByExample(example);
-
-        db.model.Categories categories = new db.model.Categories();
-        categories.setId(100);
-        categories.setTitle("Clothes1");
-        categoriesMapper.updateByExample(categories, example);
-
-
         System.out.println(categoriesMapper.countByExample(example));
 
-        System.out.println(list);
+        db.model.Categories categories = new db.model.Categories();
+        categories.setTitle("test");
+        categoriesMapper.insert(categories);
+        session.commit();
+
+        db.model.CategoriesExample example2 = new db.model.CategoriesExample();
+        example2.createCriteria().andTitleLike("test");
+        List<db.model.Categories> list2 = categoriesMapper.selectByExample(example2);
+        db.model.Categories categories2 = list2.get(0);
+        categories2.setTitle("test100");
+        categoriesMapper.updateByPrimaryKey(categories2);
+        session.commit();
+
+        categoriesMapper.deleteByPrimaryKey(categories2.getId());
+        session.commit();
+
+        session.close();
+
     }
 }
