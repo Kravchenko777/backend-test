@@ -20,8 +20,8 @@ public class LogMain {
                 .all()
                 .when()
                 .get("https://api.spoonacular.com/recipes/716429/information")
-                .prettyPeek()
+                 .prettyPeek()
                 .then()
-                .statusCode(200);
+                .statusCode(401);
     }
 }
