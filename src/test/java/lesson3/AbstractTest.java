@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-public class AbstractTest {
+public abstract class AbstractTest {
 
     static Properties prop = new Properties();
     private static InputStream configFile;

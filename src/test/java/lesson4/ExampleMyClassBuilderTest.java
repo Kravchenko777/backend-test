@@ -1,8 +1,11 @@
 package lesson4;
 
+import lesson4.builder.MyClass;
+import lesson4.builder.MyClassBuilder;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class MyClassTest {
+public class ExampleMyClassBuilderTest {
 
     @Test
     void createObject(){
@@ -12,7 +15,6 @@ public class MyClassTest {
         myClass1.setAttr2(true);
         myClass1.setAttr3(1l);
 
-
         MyClass myClass2 = new MyClass("",true,1l);
 
         MyClass myClass3 = new MyClassBuilder()
@@ -20,5 +22,8 @@ public class MyClassTest {
                 .setAttr2(true)
                 .setAttr3(1l)
                 .createMyClass();
+
+        Assertions.assertEquals(myClass1,myClass3);
+        Assertions.assertFalse(myClass1==myClass3);
     }
 }

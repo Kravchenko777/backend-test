@@ -1,4 +1,6 @@
-package lesson4;
+package lesson4.builder;
+
+import java.util.Objects;
 
 public class MyClass {
 
@@ -37,5 +39,18 @@ public class MyClass {
     }
 
     public MyClass() {
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MyClass myClass = (MyClass) o;
+        return Objects.equals(attr1, myClass.attr1) && Objects.equals(attr2, myClass.attr2) && Objects.equals(attr3, myClass.attr3);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(attr1, attr2, attr3);
     }
 }

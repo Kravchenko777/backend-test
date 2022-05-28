@@ -15,36 +15,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class ExampleMain {
-
-    ResponseSpecification responseSpecification = null;
-    RequestSpecification requestSpecification = null;
-    private final String apiKey = "62e8122bf46941569505d78f6d632a72";
-
-    @BeforeEach
-    void beforeTest() {
-        responseSpecification = new ResponseSpecBuilder()
-                .expectStatusCode(200)
-                .expectStatusLine("HTTP/1.1 200 OK")
-                .expectContentType(ContentType.JSON)
-                .expectResponseTime(Matchers.lessThan(5000L))
-                //.expectHeader("Access-Control-Allow-Credentials", "true")
-                .build();
-
-       // RestAssured.responseSpecification = responseSpecification;
-
-       RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
-
-        requestSpecification = new RequestSpecBuilder()
-                .addQueryParam("apiKey", apiKey)
-                .addQueryParam("includeNutrition", "false")
-                .setContentType(ContentType.JSON)
-                .log(LogDetail.ALL)
-                .build();
-
-       // RestAssured.requestSpecification = requestSpecification;
-
-    }
+public class ExampleTest extends AbstractTest {
 
     @Test
     void getRecipePositiveTest() {
@@ -58,8 +29,7 @@ public class ExampleMain {
 
     @Test
     void getAccountInfoWithExternalEndpointTest() {
-        AddMealRequest addMealRequest = new AddMealRequest();
-        Response response = given().spec(requestSpecification).body(addMealRequest)
+        Response response = given().spec(requestSpecification)
                 .when()
                 .formParam("title","Burger")
                 .post("https://api.spoonacular.com/recipes/cuisine").prettyPeek()
@@ -75,8 +45,8 @@ public class ExampleMain {
     void test(){
         given().spec(requestSpecification)
                 .when()
-                .formParam("title","Pork roast with green beans")
-                .formParam("language", "de")
+                .formParam("title","Burger")
+                .formParam("language", "en")
                 .post("https://api.spoonacular.com/recipes/cuisine").prettyPeek()
                 .then()
                 .statusCode(200);

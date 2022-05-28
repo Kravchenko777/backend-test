@@ -1,4 +1,4 @@
-package lesson4;
+package lesson4.builder;
 
 public class MyClassBuilder {
     private String attr1;
