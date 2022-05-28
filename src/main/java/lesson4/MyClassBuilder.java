@@ -3,7 +3,7 @@ package lesson4;
 public class MyClassBuilder {
     private String attr1;
     private Boolean attr2;
-    private Long attr3;
+    private Long attr3 = 1l;
 
     public MyClassBuilder setAttr1(String attr1) {
         this.attr1 = attr1;

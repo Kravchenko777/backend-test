@@ -31,8 +31,9 @@ public class ExampleMain {
                 //.expectHeader("Access-Control-Allow-Credentials", "true")
                 .build();
 
-        RestAssured.responseSpecification = responseSpecification;
-        RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
+       // RestAssured.responseSpecification = responseSpecification;
+
+       RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
 
         requestSpecification = new RequestSpecBuilder()
                 .addQueryParam("apiKey", apiKey)
@@ -41,6 +42,7 @@ public class ExampleMain {
                 .log(LogDetail.ALL)
                 .build();
 
+       // RestAssured.requestSpecification = requestSpecification;
 
     }
 
@@ -56,7 +58,8 @@ public class ExampleMain {
 
     @Test
     void getAccountInfoWithExternalEndpointTest() {
-        Response response = given().spec(requestSpecification)
+        AddMealRequest addMealRequest = new AddMealRequest();
+        Response response = given().spec(requestSpecification).body(addMealRequest)
                 .when()
                 .formParam("title","Burger")
                 .post("https://api.spoonacular.com/recipes/cuisine").prettyPeek()
