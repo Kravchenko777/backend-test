@@ -50,7 +50,7 @@ public class RetrofitUtils {
 
     public Retrofit getRetrofit(){
         logging.setLevel(BODY);
-        httpClient.addInterceptor(logging2);
+        httpClient.addInterceptor(logging);
         return new Retrofit.Builder()
                 .baseUrl(getBaseUrl())
                 .addConverterFactory(JacksonConverterFactory.create())
