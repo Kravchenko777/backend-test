@@ -40,6 +40,7 @@ public class LoggingTest extends AbstractTest {
         given()
                 .queryParam("apiKey", getApiKey())
                 .queryParam("includeNutrition", "false")
+                .log().all()
                 .when()
                 .get("https://api.spoonacular.com/recipes/716429/information")
                 .prettyPeek();
@@ -52,6 +53,6 @@ public class LoggingTest extends AbstractTest {
                 .queryParam("includeNutrition", "false")
                 .when()
                 .get("https://api.spoonacular.com/recipes/716429/information")
-                .then().statusCode(400);
+                .then().statusCode(201);
     }
 }

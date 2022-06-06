@@ -7,6 +7,7 @@ import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
+import lombok.SneakyThrows;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,7 +20,7 @@ public class ExampleTest extends AbstractTest {
 
     @Test
     void getRecipePositiveTest() {
-        given().spec(requestSpecification)
+        given().spec(getRequestSpecification())
                 .when()
                 .get("https://api.spoonacular.com/recipes/716429/information")
                 .then()
@@ -28,7 +29,7 @@ public class ExampleTest extends AbstractTest {
 
 
     @Test
-    void getAccountInfoWithExternalEndpointTest() {
+    void getAccountInfoWithExternalEndpointTest(){
         Response response = given().spec(requestSpecification)
                 .when()
                 .formParam("title","Burger")

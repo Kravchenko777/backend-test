@@ -49,8 +49,8 @@ public abstract class AbstractTest {
                 .log(LogDetail.ALL)
                 .build();
 
-        // RestAssured.responseSpecification = responseSpecification;
-        // RestAssured.requestSpecification = requestSpecification;
+         RestAssured.responseSpecification = responseSpecification;
+         RestAssured.requestSpecification = requestSpecification;
     }
 
     public static String getApiKey() {
@@ -59,5 +59,9 @@ public abstract class AbstractTest {
 
     public static String getBaseUrl() {
         return baseUrl;
+    }
+
+    public RequestSpecification getRequestSpecification(){
+        return requestSpecification;
     }
 }
