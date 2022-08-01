@@ -34,7 +34,7 @@ public class ExampleMain {
             session.commit();
 
             db.model.CategoriesExample example2 = new db.model.CategoriesExample();
-            example2.createCriteria().andTitleLike("test");
+            example2.createCriteria().andTitleLike("%test%");
             List<db.model.Categories> list2 = categoriesMapper.selectByExample(example2);
             db.model.Categories categories2 = list2.get(0);
             categories2.setTitle("test100");

@@ -40,17 +40,17 @@ public class RetrofitUtils {
     OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 
 
-//    public Retrofit getRetrofit(){
-//        return new Retrofit.Builder()
-//                .baseUrl(getBaseUrl())
-//                .addConverterFactory(JacksonConverterFactory.create())
-//                .build();
-//
-//    }
+/*    public Retrofit getRetrofit(){
+        return new Retrofit.Builder()
+                .baseUrl(getBaseUrl())
+                .addConverterFactory(JacksonConverterFactory.create())
+                .build();
+
+    }*/
 
     public Retrofit getRetrofit(){
         logging.setLevel(BODY);
-        httpClient.addInterceptor(logging);
+        httpClient.addInterceptor(logging2);
         return new Retrofit.Builder()
                 .baseUrl(getBaseUrl())
                 .addConverterFactory(JacksonConverterFactory.create())
